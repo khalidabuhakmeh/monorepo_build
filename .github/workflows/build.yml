@@ -35,6 +35,8 @@ jobs:
         uses: trilom/file-changes-action@v1.2.3
         with:
           prNumber: ${{ steps.pr.outputs.number }}
+          pushBefore: ''
+          pushAfter: ''
         
       - name: Ouput File Changes
         run: echo '${{ steps.file_changes.outputs.files }}'
