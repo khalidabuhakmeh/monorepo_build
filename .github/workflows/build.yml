@@ -35,12 +35,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run one "build"
         run: echo Hello, one!
-        if: contains(steps.file_changes.outputs.files , '["one/')
+        if: contains(steps.file_changes.outputs.files , '"one/')
         
       - name: Run two "build"
-        if: contains(steps.file_changes.outputs.files , '["two/')
+        if: contains(steps.file_changes.outputs.files , '"two/')
         run: echo Hello, two!
         
       - name: Run three "build"
-        if: contains(steps.file_changes.outputs.files , '["three/')
+        if: contains(steps.file_changes.outputs.files , '"three/')
         run: echo Hello, three!
