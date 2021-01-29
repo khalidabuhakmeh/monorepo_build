@@ -27,7 +27,6 @@ jobs:
         id: pr
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          // Only return if PR is still open
           filterOutClosed: true
       
       - id: file_changes
