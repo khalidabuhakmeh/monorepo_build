@@ -5,8 +5,6 @@ name: CI
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -24,10 +22,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+          
+      - uses: 8BitJonny/gh-get-current-pr@v1
+        id: pr
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          // Only return if PR is still open
+          filterOutClosed: true
       
       - id: file_changes
         name: File Changes
         uses: trilom/file-changes-action@v1.2.3
+        with:
+          prNumber: ${{ steps.pr.outputs.number }}
         
       - name: Ouput File Changes
         run: echo '${{ steps.file_changes.outputs.files }}'
