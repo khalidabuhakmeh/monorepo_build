@@ -29,7 +29,7 @@ jobs:
         name: File Changes
         uses: trilom/file-changes-action@v1.2.3
         
-      - id: test file changes
+      - name: Ouput File Changes
         run: echo '${{ steps.file_changes.outputs.files }}'
 
       # Runs a single command using the runners shell
