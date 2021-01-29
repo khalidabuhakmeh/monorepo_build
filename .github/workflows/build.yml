@@ -28,7 +28,19 @@ jobs:
       - id: file_changes
         name: File Changes
         uses: trilom/file-changes-action@v1.2.3
+        
+      - id: test file changes
+        run: echo '${{ steps.file_changes.outputs.files }}'
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Run one "build"
+        run: echo Hello, one!
+        if: contains(steps.file_changes.outputs.files , '/one/')
+        
+      - name: Run two "build"
+        if: contains(steps.file_changes.outputs.files , '/two/')
+        run: echo Hello, two!
+        
+      - name: Run three "build"
+        if: contains(steps.file_changes.outputs.files , '/three/')
+        run: echo Hello, three!
