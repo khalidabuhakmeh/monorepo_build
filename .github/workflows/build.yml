@@ -23,7 +23,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
           
-      - uses: 8BitJonny/gh-get-current-pr@v1
+      - name: Get Current Pull Request
+        uses: 8BitJonny/gh-get-current-pr@1.0.1
         id: pr
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
