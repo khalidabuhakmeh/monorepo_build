@@ -43,8 +43,8 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run one "build"
-        run: echo Hello, one!
         if: contains(steps.file_changes.outputs.files , '"one/')
+        run: echo Hello, one!
         
       - name: Run two "build"
         if: contains(steps.file_changes.outputs.files , '"two/')
@@ -53,3 +53,7 @@ jobs:
       - name: Run three "build"
         if: contains(steps.file_changes.outputs.files , '"three/')
         run: echo Hello, three!
+
+      - name: Run client "build"
+        if: contains(steps.file_changes.outputs.files , '"client/')
+        run: build
